@@ -11,7 +11,7 @@ export const profile = {
   majors: "Media Studies & Sociology",
   graduating: "Class of 2028",
   location: "Berkeley, CA",
-  email: "oliviajaedugan@icloud.com",
+  email: "oliviadugan@berkeley.edu",
   linkedin: "https://www.linkedin.com/in/oliviadugan",
   // Drop resume.pdf into /public and set this to "/resume.pdf" to show the button.
   resumeUrl: null as string | null,
