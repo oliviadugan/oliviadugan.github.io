@@ -1,0 +1,58 @@
+{/*
+  ESSAY TEMPLATE — how to publish an essay
+  1. Pick a short URL slug, e.g. "title-ix-at-55".
+  2. Copy this file to app/writing/(essays)/title-ix-at-55/page.mdx
+  3. Replace "your-slug-here" below (two places) with that slug.
+  4. Add the essay to the list in app/writing/essays.ts (same slug, title, dek, date, minutes).
+  5. Push. The site rebuilds and publishes automatically.
+  Delete these instructions and all EXAMPLE content before publishing.
+*/}
+
+import { essayMetadata } from "@/app/writing/essays";
+
+export const metadata = essayMetadata("your-slug-here");
+
+<EssayHeader slug="your-slug-here" />
+
+Replace this paragraph with your opening. Plain markdown works: **bold**, *italics*, [links](https://example.com), and lists.
+
+Every factual claim should carry a footnote to its source.[^1] Footnotes collect automatically at the bottom of the essay.
+
+## A section heading
+
+<Chart
+  type="bar"
+  title="EXAMPLE DATA — replace: a bar chart compares values across categories"
+  subtitle="Unit and scope go here, e.g. 'Average viewers, millions'"
+  source="Name the source, e.g. Nielsen, 2026"
+  unit="M"
+  highlight="2026"
+  data={[
+    { label: "2022", value: 1 },
+    { label: "2023", value: 2 },
+    { label: "2024", value: 3 },
+    { label: "2025", value: 4 },
+    { label: "2026", value: 5 },
+  ]}
+/>
+
+<PullQuote cite="Speaker name, their role">
+  EXAMPLE — replace with a line from an interview or a key sentence of the essay.
+</PullQuote>
+
+<Chart
+  type="line"
+  title="EXAMPLE DATA — replace: a line chart shows change over time (up to 3 lines)"
+  source="Name the source"
+  unit="%"
+  series={[
+    { name: "Series A", points: [{ x: 2022, y: 10 }, { x: 2023, y: 20 }, { x: 2024, y: 30 }, { x: 2025, y: 40 }] },
+    { name: "Series B", points: [{ x: 2022, y: 40 }, { x: 2023, y: 35 }, { x: 2024, y: 30 }, { x: 2025, y: 25 }] },
+  ]}
+/>
+
+| EXAMPLE column | Another column |
+| --- | --- |
+| Tables work too | and scroll sideways on phones |
+
+[^1]: Author, "Title of the source," Publication, Month Day, Year, URL.

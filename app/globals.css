@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ----------
+   Palette: navy ink on a cool paper, with the two colors of a match ball —
+   court blue for action, ball yellow for highlights. */
+:root {
+  --paper: #f2f5fa;
+  --surface: #ffffff;
+  --ink: #0d1a2d;
+  --ink-2: #45526a;
+  --ink-3: #5a6781;
+  --line: #d8dfea;
+  --blue: #1446b5;
+  --blue-text: #1446b5;
+  --blue-soft: #e3ebfb;
+  --yellow: #f6c21a;
+  --band: #0d1a2d;
+  --band-ink: #f2f5fa;
+  --band-line: #26344d;
+  --chart-1: #2a78d6;
+  --chart-2: #eb6834;
+  --chart-3: #1baf7a;
+  --grid: #e6ebf2;
+  --shadow: 0 1px 2px rgb(13 26 45 / 0.06), 0 10px 30px -12px rgb(13 26 45 / 0.18);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --paper: #0a111d;
+    --surface: #111a2b;
+    --ink: #e9eff8;
+    --ink-2: #a9b6cb;
+    --ink-3: #8a98b0;
+    --line: #223047;
+    --blue: #3d6fe0;
+    --blue-text: #8fb0ff;
+    --blue-soft: #16264a;
+    --yellow: #f6c21a;
+    --band: #111a2b;
+    --band-ink: #e9eff8;
+    --band-line: #26344d;
+    --chart-1: #3987e5;
+    --chart-2: #d95926;
+    --chart-3: #199e70;
+    --grid: #1c2940;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 30px -12px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0a111d;
+  --surface: #111a2b;
+  --ink: #e9eff8;
+  --ink-2: #a9b6cb;
+  --ink-3: #8a98b0;
+  --line: #223047;
+  --blue: #3d6fe0;
+  --blue-text: #8fb0ff;
+  --blue-soft: #16264a;
+  --yellow: #f6c21a;
+  --band: #111a2b;
+  --band-ink: #e9eff8;
+  --band-line: #26344d;
+  --chart-1: #3987e5;
+  --chart-2: #d95926;
+  --chart-3: #199e70;
+  --grid: #1c2940;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-blue: var(--blue);
+  --color-blue-text: var(--blue-text);
+  --color-blue-soft: var(--blue-soft);
+  --color-yellow: var(--yellow);
+  --color-band: var(--band);
+  --color-band-ink: var(--band-ink);
+  --color-band-line: var(--band-line);
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+}
+
+/* ---------- Base (layered so utilities can override) ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--yellow);
+    color: #0d1a2d;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--blue-text);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+  }
+}
+
+/* ---------- Components ---------- */
+@layer components {
+  /* Uppercase micro-labels (nav, eyebrows, meta). */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Condensed athletic display type. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 100;
+    background: var(--yellow);
+    color: #0d1a2d;
+    padding: 0.6rem 1rem;
+    font-weight: 700;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 1.15rem;
+    border-radius: 3px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: color-mix(in srgb, var(--blue) 88%, black);
+  }
+  .btn-ghost {
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: var(--surface);
+  }
+  .btn-ghost:hover {
+    border-color: var(--ink-3);
+  }
+
+  /* ---------- Essay typography ---------- */
+  .essay-body {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .essay-body > * + * {
+    margin-top: 1.25em;
+  }
+  .essay-body h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 2rem;
+    line-height: 1;
+    margin-top: 2.2em;
+  }
+  .essay-body h3 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-top: 1.8em;
+  }
+  .essay-body a {
+    color: var(--blue-text);
+    text-decoration: underline;
+  }
+  .essay-body ul,
+  .essay-body ol {
+    padding-left: 1.4em;
+  }
+  .essay-body ul {
+    list-style: disc;
+  }
+  .essay-body ol {
+    list-style: decimal;
+  }
+  .essay-body li + li {
+    margin-top: 0.4em;
+  }
+  .essay-body strong {
+    font-weight: 650;
+  }
+  .essay-body hr {
+    border: 0;
+    height: 1px;
+    background: var(--line);
+    margin: 2.5em 0;
+  }
+  .essay-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .essay-body th,
+  .essay-body td {
+    text-align: left;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .essay-body th {
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  .essay-body .table-scroll {
+    overflow-x: auto;
+  }
+  /* GFM footnotes: sourcing lives at the bottom of each essay. */
+  .essay-body section[data-footnotes] {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--ink-2);
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+    margin-top: 3rem;
+  }
+  .essay-body sup a {
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    padding: 0 0.1em;
+  }
+}
+
+/* ---------- Hero entrance (CSS-only so it runs before JavaScript) ---------- */
+@keyframes enter-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes enter-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes enter-wipe {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes enter-drop {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: none; }
+}
+.enter-rise,
+.enter-fade,
+.enter-wipe,
+.enter-drop {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+  animation-delay: var(--d, 0s);
+}
+.enter-rise { animation-name: enter-rise; }
+.enter-fade { animation-name: enter-fade; animation-duration: 0.5s; }
+.enter-wipe { animation-name: enter-wipe; transform-origin: left; animation-duration: 0.55s; }
+.enter-drop { animation-name: enter-drop; animation-duration: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
+}
