@@ -3,179 +3,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olivia Dugan | UC Berkeley</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  {% include head.html %}
+  <title>Olivia Dugan | Sports & Media at UC Berkeley</title>
+  <meta name="description" content="Olivia Dugan studies Media Studies and Sociology at UC Berkeley and covers Cal sports and campus events.">
 </head>
-<body class="font-sans bg-slate-50 text-gray-800">
+<body>
 
-  <header class="bg-sky-700 text-white py-16 text-center">
-    <img src="images/profile.jpg" alt="Olivia Dugan" 
-         class="w-44 h-44 rounded-full mx-auto mb-6 border-4 border-white shadow-xl object-cover">
-    <h1 class="text-4xl font-bold tracking-tight">Olivia Dugan</h1>
-    <p class="text-xl mt-3 font-light">Media Studies & Sociology @ UC Berkeley</p>
-    <div class="mt-6 flex justify-center space-x-6 text-sm">
-      <a href="mailto:oliviajaedugan@icloud.com" class="hover:text-sky-200 transition">oliviajaedugan@icloud.com</a>
-      <span>|</span>
-      <a href="https://www.linkedin.com/in/oliviadugan" target="_blank" class="hover:text-sky-200 transition">LinkedIn</a>
-      <span>|</span>
-      <a href="https://oliviadugan.github.io" class="hover:text-sky-200 transition">GitHub</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a href="#top" class="brand">Olivia Dugan</a>
+      <nav class="links" aria-label="Sections">
+        <a href="#about" class="desk">About</a>
+        <a href="#stories">Stories</a>
+        <a href="#experience" class="desk">Experience</a>
+        <a href="#skills" class="desk">Skills</a>
+        <a href="#community" class="desk">Community</a>
+        <a href="#awards" class="desk">Awards</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <nav class="bg-sky-800 text-white sticky top-0 z-50 shadow-md">
-    <div class="max-w-5xl mx-auto flex justify-center space-x-8 py-4 text-sm font-semibold uppercase tracking-wide">
-      <a href="#about" class="hover:text-sky-300">About</a>
-      <a href="/blog/" class="hover:text-sky-300">Blog</a>
-      <a href="#experience" class="hover:text-sky-300">Experience</a>
-      <a href="#skills" class="hover:text-sky-300">Skills</a>
-      <a href="#community" class="hover:text-sky-300">Community</a>
-      <a href="#awards" class="hover:text-sky-300">Awards</a>
-    </div>
-  </nav>
-
-  <section id="about" class="max-w-4xl mx-auto py-16 px-6">
-    <h2 class="text-3xl font-bold mb-6 text-sky-900 border-b-2 border-sky-100 pb-2">About Me</h2>
-    <div class="flex flex-col md:flex-row gap-8 items-center">
-      <div class="md:w-2/3">
-        <p class="text-lg leading-relaxed">
-          I am a student at <strong>UC Berkeley</strong> (Class of 2028) majoring in <strong>Media Studies</strong> and pursuing a double major in <strong>Sociology</strong>. I am passionate about digital storytelling, brand activism, and social impact.
-        </p>
-        <p class="mt-4 text-lg leading-relaxed">
-          Beyond academics, I have a background in media production—including filming a local TV ad regarding the sociological dangers of mass screentime. My experience ranges from field marketing in the tech sector to leadership in competitive athletics and global fundraising.
-        </p>
-      </div>
-      <div class="md:w-1/3">
-        <img src="images/volleyball_group_pic.JPEG" alt="Community Work" class="rounded-lg shadow-md">
-      </div>
-    </div>
-  </section>
-
-  {% if site.posts.size > 0 %}
-  <section id="blog" class="max-w-5xl mx-auto pb-16 px-6">
-    <div class="flex items-end justify-between mb-8 border-b-2 border-sky-100 pb-2">
-      <h2 class="text-3xl font-bold text-sky-900">Latest Stories</h2>
-      <a href="/blog/" class="text-sky-700 font-semibold text-sm hover:text-sky-900">All stories &rarr;</a>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      {% for post in site.posts limit:3 %}
-      <a href="{{ post.url }}" class="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition">
-        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">{{ post.sport }} · {{ post.date | date: "%b %-d" }}</p>
-        <h3 class="text-lg font-bold text-gray-900 mt-2 group-hover:text-sky-800 leading-snug">{{ post.title }}</h3>
-        <p class="text-gray-600 text-sm mt-2">{{ post.excerpt | strip_html | truncate: 110 }}</p>
-      </a>
-      {% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  <section id="experience" class="bg-white py-16 shadow-inner">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-10 text-sky-900 text-center">Professional Experience</h2>
-      
-      <div class="grid md:grid-cols-2 gap-12 items-start mb-20 border-b border-gray-100 pb-16">
+  <main>
+    <section id="top" class="hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="wrap grid">
         <div>
-          <h3 class="text-2xl font-bold text-gray-900">Client Relations & Field Marketing — Addictive Coffee</h3>
-          <p class="text-sky-700 font-semibold italic text-lg mb-4">June 2023 – August 2024 (Seasonal)</p>
-          <ul class="list-disc list-outside space-y-3 text-gray-700 text-lg leading-relaxed ml-5">
-            <li>Managed B2B outreach and tasting events for high-profile tech companies in the Bay Area.</li>
-            <li>Increased brand awareness by coordinating on-site "Coffee Culture" activations, leading to a 15% increase in client subscription renewals.</li>
-            <li>Streamlined event logistics to maximize efficiency during peak corporate break-room hours.</li>
-          </ul>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <img src="images/pouring_coffee.JPEG" alt="Pouring Coffee" class="rounded-xl shadow-lg h-64 w-full object-cover">
-          <img src="images/coffee_selfie.JPEG" alt="Addictive Crew" class="rounded-xl shadow-lg h-64 w-full object-cover">
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <div>
-          <h3 class="text-2xl font-bold text-gray-900">Head Coach (U11 Competitive) — Marin Volleyball</h3>
-          <p class="text-sky-700 font-semibold italic text-lg mb-4">November 2023 – Present</p>
-          <ul class="list-disc list-outside space-y-3 text-gray-700 text-lg leading-relaxed ml-5">
-            <li>Lead an elite travel team through intensive 15-hour weekly training cycles and tournament play.</li>
-            <li>Cultivated a high-performance team culture centered on discipline and technical mastery.</li>
-            <li>Acted as primary liaison between organizational directors and families for travel logistics.</li>
-          </ul>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <img src="images/volleyball_coach_team_pic.JPG" alt="Volleyball Team" class="rounded-xl shadow-lg h-64 w-full object-cover">
-          <img src="images/volleyball_coach_team_huddle.JPEG" alt="Team Huddle" class="rounded-xl shadow-lg h-64 w-full object-cover">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="max-w-5xl mx-auto py-16 px-6">
-    <h2 class="text-3xl font-bold mb-10 text-sky-900 text-center">Skills</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-sky-50 p-6 rounded-xl border border-sky-100">
-        <h3 class="font-bold text-sky-800 mb-3 text-lg">Production</h3>
-        <p class="text-gray-700">Digital Film Production, Ad Strategy, Final Cut Pro, Scripting for Local Television.</p>
-      </div>
-      <div class="bg-sky-50 p-6 rounded-xl border border-sky-100">
-        <h3 class="font-bold text-sky-800 mb-3 text-lg">Communication</h3>
-        <p class="text-gray-700">Public Speaking, B2B Relations, Fundraising ($20k+ managed), Team Leadership.</p>
-      </div>
-      <div class="bg-sky-50 p-6 rounded-xl border border-sky-100">
-        <h3 class="font-bold text-sky-800 mb-3 text-lg">Tools</h3>
-        <p class="text-gray-700">Google Workspace, Canva, Social Media Analytics, GitHub Pages, Project Management.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="community" class="bg-sky-900 text-white py-16">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-10 text-center">Community Impact</h2>
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Daraja Club Founder</h3>
-          <p class="text-sky-200 mb-4">Established school chapter to support an all-girls school in Kenya. Fundraised over $20,000 for food and housing.</p>
-          <img src="images/coffee_line.JPEG" alt="Fundraising Event" class="rounded-lg shadow-md w-full h-48 object-cover">
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-2">The PLARN Project</h3>
-          <p class="text-sky-200 mb-4">Directed the weaving of 500+ sleeping mats for the local homeless community using recycled plastic.</p>
-          <div class="bg-sky-800 rounded-lg shadow-md w-full h-48 flex items-center justify-center text-xs italic text-sky-400">PLARN Project photo pending upload</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="awards" class="max-w-5xl mx-auto py-16 px-6">
-    <h2 class="text-3xl font-bold mb-8 text-sky-900 text-center">Honors & Awards</h2>
-    <div class="bg-white border rounded-2xl p-8 shadow-sm max-w-2xl mx-auto">
-      <ul class="space-y-6">
-        <li class="flex items-center gap-4">
-          <span class="text-2xl">🏅</span>
-          <div>
-            <p class="font-bold text-lg">Student-Athlete Scholarship</p>
-            <p class="text-sm text-gray-600">Varsity Volleyball Captain (4.6 GPA).</p>
+          <div class="eyebrow reveal">Berkeley, CA · Class of 2028</div>
+          <h1 class="reveal">Olivia Dugan.</h1>
+          <p class="intro reveal"><strong>Media Studies &amp; Sociology</strong> at UC Berkeley. I cover Cal sports, men's and women's, and the people behind the games. Former varsity volleyball captain and club coach.</p>
+          <div class="links reveal">
+            <a href="mailto:oliviajaedugan@icloud.com"><span>01</span>oliviajaedugan@icloud.com</a>
+            <a href="https://www.linkedin.com/in/oliviadugan" target="_blank" rel="noreferrer"><span>02</span>LinkedIn</a>
+            <a href="/blog/"><span>03</span>Stories</a>
           </div>
-        </li>
-        <li class="flex items-center gap-4">
-          <span class="text-2xl">📰</span>
-          <div>
-            <p class="font-bold text-lg">Marin IJ "Prep of the Week"</p>
-            <p class="text-sm text-gray-600">Three-time winner.</p>
-          </div>
-        </li>
-        <li class="flex items-center gap-4">
-          <span class="text-2xl">🏊‍♀️</span>
-          <div>
-            <p class="font-bold text-lg">Alumni Scholarship</p>
-            <p class="text-sm text-gray-600">Legacy scholarship recipient within the swim program.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
+        </div>
+        <div class="portrait reveal">
+          <img src="/images/web/profile.jpg" alt="Olivia Dugan" width="675" height="900">
+        </div>
+      </div>
+    </section>
 
-  <footer class="bg-gray-100 py-12 text-center border-t">
-    <p class="text-xs text-gray-400">© 2026 Olivia Dugan</p>
-  </footer>
+    <div class="wrap"><div class="divider"></div></div>
 
+    <section id="about" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label"><span class="index">01</span><span class="name">About</span><span class="rule"></span></div>
+          <h2>From the court to the press row.</h2>
+        </div>
+        <div class="about">
+          <div class="reveal">
+            <p>I'm a student at <strong>UC Berkeley</strong> (class of 2028) studying <strong>Media Studies</strong> with a Media Law &amp; Policy concentration, and working toward a second major in <strong>Sociology</strong>.</p>
+            <p>Volleyball came first. I captained my varsity team in Marin, then coached a U11 club travel team. That's where I learned that the score is only half of a game's story.</p>
+            <p>Now I'm in the stands with a camera at Cal games and campus events, writing recaps and features for my blog, and running social media for my Alpha Phi chapter. Sociology keeps teaching me how much sports shape a community, and that's the angle I bring to every story.</p>
+          </div>
+          <div class="photo reveal" style="aspect-ratio: 16 / 10;">
+            <img src="/images/web/volleyball-group.jpg" alt="Olivia with her volleyball team" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stories" class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label"><span class="index">02</span><span class="name">Stories</span><span class="rule"></span></div>
+          <h2>Latest from the stands.</h2>
+          <p>Game recaps, previews and athlete features from Cal Athletics, plus the campus events that make Berkeley loud.</p>
+        </div>
+        {% if site.posts.size > 0 %}
+        <div class="stories">
+          {% for post in site.posts limit:4 %}
+          <a href="{{ post.url }}" class="story reveal{% if forloop.first %} lead{% endif %}">
+            <span class="meta"><b>{{ post.sport }}</b>&nbsp;&nbsp;{{ post.event_date | default: post.date | date: "%b %-d, %Y" }}</span>
+            <h3>{{ post.title }}</h3>
+            {% if forloop.first %}<p>{{ post.excerpt | strip_html | truncate: 200 }}</p>{% endif %}
+          </a>
+          {% endfor %}
+        </div>
+        <a href="/blog/" class="more-link reveal">Read all stories</a>
+        {% else %}
+        <div class="stories-empty reveal">
+          <h3>First stories are on the way.</h3>
+          <p>Recaps and features from Cal football, volleyball and campus events will appear here as they're published.</p>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <section id="experience" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label"><span class="index">03</span><span class="name">Experience</span><span class="rule"></span></div>
+          <h2>Where I've put in the reps.</h2>
+        </div>
+        <div class="timeline">
+          <article class="job reveal">
+            <div class="top">
+              <h3>Founder, Writer &amp; Editor <span class="org">· Independent Sports Blog</span></h3>
+              <span class="when">2026 – Present</span>
+            </div>
+            <p class="where">Berkeley, CA</p>
+            <ul>
+              <li>Cover Cal Athletics and UC Berkeley events from the stands, writing game recaps, previews and athlete features.</li>
+              <li>Shoot photos and video at every event and cut highlight clips in Final Cut Pro.</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="top">
+              <h3>Co-Director of Social Media <span class="org">· Alpha Phi</span></h3>
+              <span class="when">2026 – Present</span>
+            </div>
+            <p class="where">UC Berkeley</p>
+            <ul>
+              <li>Co-run the chapter's Instagram and TikTok, planning, shooting and editing recruitment, philanthropy and event content.</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="top">
+              <h3>Director &amp; Lead Editor <span class="org">· Media Academy</span></h3>
+              <span class="when">Sept 2023 – May 2024</span>
+            </div>
+            <p class="where">San Rafael, CA</p>
+            <ul>
+              <li>Wrote, directed and edited a public service announcement on the psychological effects of mass screen time.</li>
+              <li>The PSA was selected for broadcast on local television.</li>
+            </ul>
+          </article>
+
+          <article class="job reveal">
+            <div class="top">
+              <h3>Head Coach, U11 Competitive <span class="org">· Marin Volleyball</span></h3>
+              <span class="when">Nov 2023 – June 2025</span>
+            </div>
+            <p class="where">San Rafael, CA</p>
+            <ul>
+              <li>Led a 12-player travel team through 15-plus hours a week of practice, tournaments and travel.</li>
+              <li>Built practice plans and game-day tactics, and ran communication between families and club directors.</li>
+            </ul>
+            <div class="shots">
+              <div class="photo"><img src="/images/web/coach-team.jpg" alt="Olivia's U11 team after a tournament" loading="lazy"></div>
+              <div class="photo"><img src="/images/web/coach-huddle.jpg" alt="Team huddle during a tournament" loading="lazy"></div>
+            </div>
+          </article>
+
+          <article class="job reveal">
+            <div class="top">
+              <h3>Client Relations &amp; Operations <span class="org">· Addictive Coffee</span></h3>
+              <span class="when">June 2023 – Aug 2024</span>
+            </div>
+            <p class="where">San Francisco Bay Area · Seasonal</p>
+            <ul>
+              <li>Ran B2B coffee tastings and on-site activations for Bay Area tech companies.</li>
+              <li>Used client feedback to shape custom roasts, contributing to a 15% increase in recurring corporate accounts.</li>
+            </ul>
+            <div class="shots">
+              <div class="photo"><img src="/images/web/coffee-pour.jpg" alt="Pouring coffee at a client tasting" loading="lazy"></div>
+              <div class="photo"><img src="/images/web/coffee-crew.jpg" alt="The Addictive Coffee crew" loading="lazy" style="object-position: 50% 30%;"></div>
+            </div>
+          </article>
+
+          <article class="job reveal">
+            <div class="top">
+              <h3>Youth Swim Instructor <span class="org">· Private Instruction</span></h3>
+              <span class="when">Mar 2022 – June 2023</span>
+            </div>
+            <p class="where">San Rafael, CA</p>
+            <ul>
+              <li>Taught water safety and stroke technique to kids under 7, one-on-one.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label"><span class="index">04</span><span class="name">Skills</span><span class="rule"></span></div>
+          <h2>What I work with.</h2>
+        </div>
+        <div class="skills">
+          <div class="skill-card reveal">
+            <div class="head"><h3>Production</h3><span class="n">01</span></div>
+            <div class="chips">
+              <span class="chip">Final Cut Pro</span><span class="chip">Adobe Premiere Pro</span><span class="chip">Photoshop</span><span class="chip">Canva</span><span class="chip">Digital cinematography</span><span class="chip">Photography</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="head"><h3>Storytelling</h3><span class="n">02</span></div>
+            <div class="chips">
+              <span class="chip">Sports writing</span><span class="chip">Game recaps</span><span class="chip">Feature stories</span><span class="chip">Scripting for TV</span><span class="chip">Short-form video</span><span class="chip">Instagram</span><span class="chip">TikTok</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="head"><h3>People</h3><span class="n">03</span></div>
+            <div class="chips">
+              <span class="chip">Public speaking</span><span class="chip">Team leadership</span><span class="chip">Coaching</span><span class="chip">Fundraising</span><span class="chip">Client relations</span><span class="chip">Social media analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <section id="community" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label"><span class="index">05</span><span class="name">Community</span><span class="rule"></span></div>
+          <h2>Work off the clock.</h2>
+        </div>
+        <div class="community">
+          <article class="cause reveal">
+            <div class="photo"><img src="/images/web/fundraiser.jpg" alt="Community fundraising event" loading="lazy"></div>
+            <div class="body">
+              <h3>Daraja Club</h3>
+              <p class="role">Founding member &amp; treasurer, Aug 2022 – May 2024</p>
+              <p>Co-founded a high school chapter supporting Daraja Academy, an all-girls school in Kenya. Managed the club's finances and helped raise more than $20,000 for food and housing.</p>
+            </div>
+          </article>
+          <article class="cause reveal">
+            <div class="body">
+              <h3>The PLARN Project</h3>
+              <p class="role">Project coordinator, Aug 2020 – May 2024</p>
+              <p>Organized weekly drives to collect plastic bags and led workshops that turned them into more than 500 weather-resistant sleeping mats for unhoused residents of San Rafael.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards" class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label"><span class="index">06</span><span class="name">Awards</span><span class="rule"></span></div>
+          <h2>Recognition.</h2>
+        </div>
+        <ul class="awards reveal">
+          <li><h3>Student-Athlete Scholarship</h3><p>Varsity volleyball captain with a 4.6 GPA.</p></li>
+          <li><h3>Marin IJ Prep of the Week</h3><p>Named three times by the Marin Independent Journal.</p></li>
+          <li><h3>Alumni Legacy Scholarship</h3><p>Awarded through the swim program.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <section id="contact" class="section contact">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label"><span class="index">07</span><span class="name">Contact</span><span class="rule"></span></div>
+        </div>
+        <h2 class="reveal">Covering something at Cal, or hiring for sports media? Let's talk.</h2>
+        <a class="mail reveal" href="mailto:oliviajaedugan@icloud.com">oliviajaedugan@icloud.com</a>
+        <div class="alt reveal">
+          <a href="https://www.linkedin.com/in/oliviadugan" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="/blog/">Stories</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include footer.html %}
 </body>
 </html>
