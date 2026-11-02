@@ -197,3 +197,4 @@ section[id] { scroll-margin-top: 4rem; }
   .ticker-track { animation: none; }
   .hover-photo { transition: none; }
 }
+.entry .shots.one { grid-template-columns: 1fr; max-width: 32rem; }
