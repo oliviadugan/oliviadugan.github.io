@@ -10,10 +10,10 @@
 
   <main>
     <article class="article">
-      <p class="meta"><b>{{ page.sport }}</b>{% if page.event_date %}&nbsp;&nbsp;{{ page.event_date | date: "%B %-d, %Y" }}{% endif %}{% if page.location %}&nbsp;&nbsp;{{ page.location }}{% endif %}</p>
+      <p class="kicker"><strong>{{ page.sport }}</strong>{% if page.event_date %}, {{ page.event_date | date: "%B %-d, %Y" }}{% endif %}{% if page.location %}, {{ page.location }}{% endif %}</p>
       <h1>{{ page.title }}</h1>
       {% if page.subtitle %}<p class="deck">{{ page.subtitle }}</p>{% endif %}
-      <p class="byline">By <strong>Olivia Dugan</strong>, published {{ page.date | date: "%B %-d, %Y" }}</p>
+      <p class="byline">By <strong>Olivia Dugan</strong>. Published {{ page.date | date: "%B %-d, %Y" }}.</p>
 
       {% if page.image %}
       <figure>
@@ -27,8 +27,8 @@
       </div>
 
       <nav class="pager" aria-label="More stories">
-        {% if page.next %}<a href="{{ page.next.url }}"><small>Newer</small>{{ page.next.title }}</a>{% else %}<span></span>{% endif %}
-        {% if page.previous %}<a class="next" href="{{ page.previous.url }}"><small>Older</small>{{ page.previous.title }}</a>{% endif %}
+        {% if page.next %}<a href="{{ page.next.url }}"><span>Newer story</span>{{ page.next.title }}</a>{% else %}<div></div>{% endif %}
+        {% if page.previous %}<a class="older" href="{{ page.previous.url }}"><span>Older story</span>{{ page.previous.title }}</a>{% endif %}
       </nav>
     </article>
   </main>

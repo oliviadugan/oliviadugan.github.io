@@ -11,42 +11,38 @@ title: Stories
 <body>
   {% include subnav.html %}
 
-  <main>
-    <section class="page-head">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="wrap">
-        <div class="eyebrow reveal">Cal Athletics · Campus life</div>
-        <h1 class="reveal">Stories.</h1>
-        <p class="reveal">Game recaps, previews and the people behind Cal's men's and women's teams, plus the campus events that make Berkeley loud.</p>
-      </div>
-    </section>
+  <main class="wrap blog-main">
+    <div class="page-head">
+      <h1>Stories</h1>
+      <p>Recaps, previews and profiles from Cal Athletics, covering men's and women's teams, plus campus events at UC Berkeley.</p>
+    </div>
 
-    <section class="wrap">
-      {% if site.posts.size > 0 %}
-      {% assign sports = site.posts | map: "sport" | compact | uniq | sort %}
-      <div class="filters" role="group" aria-label="Filter by sport">
-        <button type="button" data-sport="all" aria-pressed="true">All</button>
-        {% for s in sports %}<button type="button" data-sport="{{ s | slugify }}" aria-pressed="false">{{ s }}</button>{% endfor %}
-      </div>
-      <div class="story-list">
-        {% for post in site.posts %}
-        <a href="{{ post.url }}" class="story" data-sport="{{ post.sport | slugify }}">
-          {% if post.image %}<div class="thumb"><img src="{{ post.image }}" alt="" loading="lazy"></div>{% endif %}
-          <span class="meta"><b>{{ post.sport }}</b>&nbsp;&nbsp;{{ post.event_date | default: post.date | date: "%b %-d, %Y" }}</span>
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.excerpt | strip_html | truncate: 170 }}</p>
+    {% if site.posts.size > 0 %}
+    {% assign sports = site.posts | map: "sport" | compact | uniq | sort %}
+    <div class="filters" role="group" aria-label="Filter stories by sport">
+      <button type="button" data-sport="all" aria-pressed="true">All</button>
+      {% for s in sports %}<button type="button" data-sport="{{ s | slugify }}" aria-pressed="false">{{ s }}</button>{% endfor %}
+    </div>
+    <ul class="story-list">
+      {% for post in site.posts %}
+      <li class="story-item{% if post.image %} has-thumb{% endif %}" data-sport="{{ post.sport | slugify }}">
+        <a href="{{ post.url }}">
+          <span class="when"><strong>{{ post.sport }}</strong>{{ post.event_date | default: post.date | date: "%B %-d, %Y" }}</span>
+          <div>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+          </div>
+          {% if post.image %}<span class="thumb"><img src="{{ post.image }}" alt="" loading="lazy"></span>{% endif %}
         </a>
-        {% endfor %}
-      </div>
-      {% else %}
-      <div class="stories-empty" style="margin-bottom: 6rem;">
-        <h3>First stories are on the way.</h3>
-        <p>Recaps and features from Cal football, volleyball and campus events will appear here as they're published.</p>
-      </div>
-      {% endif %}
-    </section>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-note">The first stories will be posted here soon.</p>
+    {% endif %}
   </main>
 
   {% include footer.html %}
+  <script src="/assets/js/site.js"></script>
 </body>
 </html>
