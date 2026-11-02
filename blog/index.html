@@ -24,7 +24,8 @@ title: Stories
       {% for s in sports %}<button type="button" data-sport="{{ s | slugify }}" aria-pressed="false">{{ s }}</button>{% endfor %}
     </div>
     <ul class="story-list">
-      {% for post in site.posts %}
+      {% assign by_game = site.posts | sort: "event_date", "first" | reverse %}
+      {% for post in by_game %}
       <li class="story-item{% if post.image %} has-thumb{% endif %}" data-sport="{{ post.sport | slugify }}">
         <a href="{{ post.url }}">
           <span class="when"><strong>{{ post.sport }}</strong>{{ post.event_date | default: post.date | date: "%B %-d, %Y" }}</span>

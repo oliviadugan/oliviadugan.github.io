@@ -48,7 +48,8 @@
         </div>
         {% if site.posts.size > 0 %}
         <ul class="story-list">
-          {% for post in site.posts limit:5 %}
+          {% assign by_game = site.posts | sort: "event_date", "first" | reverse %}
+          {% for post in by_game limit:5 %}
           <li class="story-item">
             <a href="{{ post.url }}">
               <span class="when"><strong>{{ post.sport }}</strong>{{ post.event_date | default: post.date | date: "%B %-d, %Y" }}</span>
