@@ -26,7 +26,7 @@ title: Stories
     <ul class="story-list">
       {% assign by_game = site.posts | sort: "event_date", "first" | reverse %}
       {% for post in by_game %}
-      <li class="story-item{% if post.image %} has-thumb{% endif %}" data-sport="{{ post.sport | slugify }}">
+      <li class="story-item{% if post.image %} has-thumb{% endif %}" data-sport="{{ post.sport | slugify }}"{% if post.image %} data-img="{{ post.image }}"{% endif %}>
         <a href="{{ post.url }}">
           <span class="when"><strong>{{ post.sport }}</strong>{{ post.event_date | default: post.date | date: "%B %-d, %Y" }}</span>
           <div>

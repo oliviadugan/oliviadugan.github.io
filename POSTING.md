@@ -12,7 +12,7 @@ subtitle: "Optional one-line deck under the headline"
 sport: Volleyball            # used for the filter buttons: Football, Volleyball, Basketball, Campus...
 event_date: 2026-11-07       # the day the game or event happened
 location: Haas Pavilion, Berkeley
-image: /images/your-photo.jpg   # optional; upload the photo to /images first
+image: /images/your-photo.jpg   # optional, but recommended: it is the photo that pops up when someone hovers the headline; upload it to /images first
 image_caption: "Optional photo caption and credit"
 ---
 

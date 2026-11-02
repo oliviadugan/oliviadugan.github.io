@@ -26,6 +26,7 @@
       <div class="wrap grid">
         <div>
           <h1>Olivia Dugan</h1>
+          <div class="flapboard" aria-hidden="true"><span>C</span><span>A</span><span>L</span><span class="gap"></span><span>S</span><span>P</span><span>O</span><span>R</span><span>T</span><span>S</span></div>
           <p class="role">Sports writer and Media Studies student at UC Berkeley</p>
           <p class="intro">I cover Cal Athletics, men's and women's teams, plus the campus events around them: game recaps, previews and profiles of the people involved. I played varsity volleyball as team captain and later coached a U11 club team in Marin.</p>
           <div class="actions">
@@ -40,6 +41,18 @@
       </div>
     </section>
 
+    {% assign by_game = site.posts | sort: "event_date", "first" | reverse %}
+    {% if site.posts.size > 0 %}
+    <aside class="ticker" aria-label="Latest stories">
+      <span class="ticker-tag">Latest</span>
+      <div class="ticker-window">
+        <div class="ticker-track">
+          {% for post in by_game limit:8 %}<a href="{{ post.url }}"><b>{{ post.sport }}</b>{{ post.title }}</a>{% endfor %}
+        </div>
+      </div>
+    </aside>
+    {% endif %}
+
     <section id="stories" class="section">
       <div class="wrap">
         <div class="section-head">
@@ -48,9 +61,8 @@
         </div>
         {% if site.posts.size > 0 %}
         <ul class="story-list">
-          {% assign by_game = site.posts | sort: "event_date", "first" | reverse %}
           {% for post in by_game limit:5 %}
-          <li class="story-item">
+          <li class="story-item"{% if post.image %} data-img="{{ post.image }}"{% endif %}>
             <a href="{{ post.url }}">
               <span class="when"><strong>{{ post.sport }}</strong>{{ post.event_date | default: post.date | date: "%B %-d, %Y" }}</span>
               <div>
@@ -220,5 +232,6 @@
   </main>
 
   {% include footer.html %}
+  <script src="/assets/js/site.js"></script>
 </body>
 </html>

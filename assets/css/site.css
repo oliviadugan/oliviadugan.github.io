@@ -160,3 +160,40 @@ h1, h2, h3 { color: var(--ink); margin: 0; }
 .pager span { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.2rem; }
 .pager .older { text-align: right; }
 section[id] { scroll-margin-top: 4rem; }
+
+/* Scoreboard flip under the name (runs once on load; hover replays it) */
+.flapboard { display: flex; gap: 3px; margin-top: 1.1rem; }
+.flapboard span { position: relative; width: 1.9rem; height: 2.6rem; display: grid; place-items: center; background: var(--ink); color: #fff; border-radius: 3px; font: 600 1.35rem/1 "SF Mono", ui-monospace, Menlo, monospace; overflow: hidden; }
+.flapboard span::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0, 0, 0, 0.6); }
+.flapboard .gap { width: 0.7rem; background: none; }
+.flapboard .gap::after { display: none; }
+.flapboard .flip { animation: flip 0.05s linear; }
+@keyframes flip { from { transform: scaleY(0.6); } }
+@media (max-width: 420px) { .flapboard span { width: 1.6rem; height: 2.2rem; font-size: 1.1rem; } }
+
+/* Latest-stories ticker */
+.ticker { display: flex; align-items: stretch; background: var(--ink); color: #fff; font-size: 0.95rem; }
+.ticker-tag { flex: none; display: flex; align-items: center; padding: 0 1.25rem; background: var(--accent); font-weight: 600; }
+.ticker-window { flex: 1; overflow: hidden; }
+.ticker-track { display: flex; width: max-content; animation: tick var(--tick-time, 40s) linear infinite; }
+.ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+.ticker a { padding: 0.8rem 1.5rem; color: #fff; white-space: nowrap; }
+.ticker a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ticker b { margin-right: 0.5rem; color: #9fcbf5; font-weight: 600; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* Story photo that follows the cursor (mouse only) */
+.hover-photo { position: fixed; left: 0; top: 0; z-index: 30; width: 16rem; aspect-ratio: 3 / 2; border-radius: 6px; overflow: hidden; pointer-events: none; opacity: 0; transform: scale(0.94); transition: opacity 0.18s, transform 0.18s; box-shadow: 0 14px 34px rgba(15, 34, 56, 0.22); }
+.hover-photo.on { opacity: 1; transform: none; }
+.hover-photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (hover: hover) and (pointer: fine) {
+  .story-item.has-thumb a { grid-template-columns: 11rem 1fr; }
+  .story-item .thumb { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flapboard .flip { animation: none; }
+  .ticker-window { overflow-x: auto; }
+  .ticker-track { animation: none; }
+  .hover-photo { transition: none; }
+}
