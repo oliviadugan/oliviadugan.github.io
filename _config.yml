@@ -1,0 +1,15 @@
+title: Olivia Dugan
+description: Sports and campus stories from UC Berkeley, by Olivia Dugan.
+url: https://oliviadugan.github.io
+timezone: America/Los_Angeles
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+exclude:
+  - README.md
+  - POSTING.md
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

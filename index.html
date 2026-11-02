@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +27,7 @@
   <nav class="bg-sky-800 text-white sticky top-0 z-50 shadow-md">
     <div class="max-w-5xl mx-auto flex justify-center space-x-8 py-4 text-sm font-semibold uppercase tracking-wide">
       <a href="#about" class="hover:text-sky-300">About</a>
+      <a href="/blog/" class="hover:text-sky-300">Blog</a>
       <a href="#experience" class="hover:text-sky-300">Experience</a>
       <a href="#skills" class="hover:text-sky-300">Skills</a>
       <a href="#community" class="hover:text-sky-300">Community</a>
@@ -37,7 +40,7 @@
     <div class="flex flex-col md:flex-row gap-8 items-center">
       <div class="md:w-2/3">
         <p class="text-lg leading-relaxed">
-          I am a student at **UC Berkeley** (Class of 2028) majoring in **Media Studies** and pursuing a double major in **Sociology**. I am passionate about digital storytelling, brand activism, and social impact.
+          I am a student at <strong>UC Berkeley</strong> (Class of 2028) majoring in <strong>Media Studies</strong> and pursuing a double major in <strong>Sociology</strong>. I am passionate about digital storytelling, brand activism, and social impact.
         </p>
         <p class="mt-4 text-lg leading-relaxed">
           Beyond academics, I have a background in media production—including filming a local TV ad regarding the sociological dangers of mass screentime. My experience ranges from field marketing in the tech sector to leadership in competitive athletics and global fundraising.
@@ -48,6 +51,24 @@
       </div>
     </div>
   </section>
+
+  {% if site.posts.size > 0 %}
+  <section id="blog" class="max-w-5xl mx-auto pb-16 px-6">
+    <div class="flex items-end justify-between mb-8 border-b-2 border-sky-100 pb-2">
+      <h2 class="text-3xl font-bold text-sky-900">Latest Stories</h2>
+      <a href="/blog/" class="text-sky-700 font-semibold text-sm hover:text-sky-900">All stories &rarr;</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      {% for post in site.posts limit:3 %}
+      <a href="{{ post.url }}" class="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">{{ post.sport }} · {{ post.date | date: "%b %-d" }}</p>
+        <h3 class="text-lg font-bold text-gray-900 mt-2 group-hover:text-sky-800 leading-snug">{{ post.title }}</h3>
+        <p class="text-gray-600 text-sm mt-2">{{ post.excerpt | strip_html | truncate: 110 }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 
   <section id="experience" class="bg-white py-16 shadow-inner">
     <div class="max-w-6xl mx-auto px-6">
